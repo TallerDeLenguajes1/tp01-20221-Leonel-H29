@@ -40,14 +40,17 @@ namespace Problema_3.Controllers
                         using (StreamReader objReader = new StreamReader(strReader))
                         {
                             string responseBody = objReader.ReadToEnd();
-                            ProvinciasArgentina ListProvincias = JsonSerializer.Deserialize<ProvinciasArgentina>(responseBody);
-                            //string[] array_Provincias = new string[ListProvincias.Cantidad];
-                            //int i = 0;
+                            List<Provincia> ListProvincias;
+                            ListProvincias = JsonSerializer.Deserialize<ProvinciasArgentina>(responseBody).Provincias;
+                            //ProvinciasArgentina ListProvincias = JsonSerializer.Deserialize<ProvinciasArgentina>(responseBody);
+                            
+                            /*
                             foreach (Provincia Prov in ListProvincias.Provincias)
                             {
                                 //Console.WriteLine("id: " + Prov.Id + " Nombre: " + Prov.Nombre);
                                 //array_Provincias[i] = "id: " + Prov.Id + " Nombre: " + Prov.Nombre;
                             }
+                            */
 
                         }
                     }
@@ -55,7 +58,8 @@ namespace Problema_3.Controllers
             }
             catch (Exception )
             {
-                // Handle error
+                // En caso de error, salgo del programa
+                return;
             }
         }
 
