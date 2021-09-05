@@ -2,6 +2,29 @@
 @{
     ViewData["Title"] = "Problema3";
 }
+@using Problema_3.Entities
+<h1>Problema 3</h1>
 
-<h1>Problema3</h1>
+<h2>Listado de Provincias Argentinas, con su correspondiente Id</h2>
+<form asp-action="Problema3" asp-controller="Home" method="post">
 
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+            </tr>
+        </thead>
+        @{
+
+            foreach (Provincia prov in Model)
+            {
+                <tr>
+                    <td>@prov.Id</td>
+                    <td>@prov.Nombre</td>
+                </tr>
+            }
+        }
+
+    </table>
+</form>
